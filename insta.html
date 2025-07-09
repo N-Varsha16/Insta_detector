@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Account Checker</title>
+  <link rel="stylesheet" href="insta.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔍 Instagram Account Checker</h1>
+    <p>Check if an Instagram account is real or fake.</p>
+
+    <form id="accountForm">
+      <input type="text" id="username" placeholder="Enter Instagram Username" required />
+      <button type="submit">Check Now</button>
+    </form>
+
+    <div id="result" class="result-box hidden">
+      <h2>Result</h2>
+      <p id="resultText">Loading...</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('accountForm');
+    const resultBox = document.getElementById('result');
+    const resultText = document.getElementById('resultText');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+
+      // TEMPORARY: Fake decision logic for demo
+      const isFake = username.length < 5 || username.includes("123");
+      resultText.innerText = isFake
+        ? "🔴 Possibly FAKE account"
+        : "🟢 Likely a REAL account";
+
+      resultBox.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>
